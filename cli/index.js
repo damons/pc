@@ -12,7 +12,7 @@ const got = require('got');
 const ora = require('ora');
 const api = require('./api');
 
-const PLUGIN_PREFIX = 'hyper-';
+const PLUGIN_PREFIX = 'procli-';
 
 let commandPromise;
 
@@ -28,7 +28,7 @@ const checkConfig = () => {
     return true;
   }
   let msg = chalk.red(`Error! Config file not found: ${api.configPath}\n`);
-  msg += 'Please launch Hyper and retry.';
+  msg += 'Please launch Procli and retry.';
   console.error(msg);
   process.exit(1);
 };
@@ -67,7 +67,7 @@ args.command(['ls', 'list'], 'List installed plugins', () => {
 
 const lsRemote = pattern => {
   // note that no errors are catched by this function
-  const URL = `https://api.npms.io/v2/search?q=${(pattern && `${pattern}+`) || ''}keywords:hyper-plugin,hyper-theme`;
+  const URL = `https://api.npms.io/v2/search?q=${(pattern && `${pattern}+`) || ''}keywords:procli-plugin,procli-theme`;
   return got(URL)
     .then(response => JSON.parse(response.body).results)
     .then(entries => entries.map(entry => entry.package))
@@ -94,7 +94,7 @@ args.command(['s', 'search'], 'Search for plugins on npm', (name, args_) => {
       if (entries.length === 0) {
         spinner.fail();
         console.error(chalk.red(`Your search '${query}' did not match any plugins`));
-        console.error(`${chalk.red('Try')} ${chalk.green('hyper ls-remote')}`);
+        console.error(`${chalk.red('Try')} ${chalk.green('procli ls-remote')}`);
         process.exit(1);
       } else {
         let msg = columnify(entries);
@@ -133,13 +133,13 @@ args.command(['d', 'docs', 'h', 'home'], 'Open the npm page of a plugin', (name,
   process.exit(0);
 });
 
-args.command(['<default>'], 'Launch Hyper');
+args.command(['<default>'], 'Launch Procli');
 
 args.option(['v', 'verbose'], 'Verbose mode', false);
 
 const main = argv => {
   const flags = args.parse(argv, {
-    name: 'hyper',
+    name: 'procli',
     version: false,
     mri: {
       boolean: ['v', 'verbose']
@@ -151,7 +151,7 @@ const main = argv => {
   }
 
   const env = Object.assign({}, process.env, {
-    // this will signal Hyper that it was spawned from this module
+    // this will signal Procli that it was spawned from this module
     HYPER_CLI: '1',
     ELECTRON_NO_ATTACH_CONSOLE: '1'
   });
@@ -179,8 +179,8 @@ const main = argv => {
   if (!flags.verbose) {
     options['stdio'] = 'ignore';
     if (process.platform === 'darwin') {
-      //Use `open` to prevent multiple Hyper process
-      const cmd = `open -b co.zeit.hyper ${args_}`;
+      //Use `open` to prevent multiple Procli process
+      const cmd = `open -b co.monadicus.procli ${args_}`;
       const opts = {
         env
       };

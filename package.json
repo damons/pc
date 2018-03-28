@@ -1,5 +1,5 @@
 {
-  "repository": "zeit/hyper",
+  "repository": "monadicus/procli",
   "scripts": {
     "start": "echo 'please run `yarn run dev` in one tab and then `yarn run app` in another one'",
     "app": "electron app",
@@ -120,14 +120,14 @@
     }
   },
   "build": {
-    "appId": "co.zeit.hyper",
+    "appId": "computer.prolog.procli",
     "extraResources": [
       "./bin/yarn-standalone.js",
       "./bin/cli.js",
       {
         "from": "./build/${os}/",
         "to": "./bin/",
-        "filter": ["hyper*"]
+        "filter": ["procli*"]
       }
     ],
     "linux": {
@@ -167,8 +167,8 @@
   },
   "license": "MIT",
   "author": {
-    "name": "ZEIT, Inc.",
-    "email": "team@zeit.co"
+    "name": "Damon Sicore.",
+    "email": "damon@sicore.com"
   },
   "dependencies": {
     "args": "3.0.8",

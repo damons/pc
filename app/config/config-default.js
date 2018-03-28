@@ -1,6 +1,6 @@
-// Future versions of Hyper may add additional config options,
+// Future versions of Procli may add additional config options,
 // which will not automatically be merged into this file.
-// See https://hyper.is#cfg for all currently supported options.
+// See https://procli.is#cfg for all currently supported options.
 
 module.exports = {
   config: {
@@ -112,7 +112,7 @@ module.exports = {
     // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
     copyOnSelect: false,
 
-    // if `true` (without backticks and without quotes), hyper will be set as the default protocol client for SSH
+    // if `true` (without backticks and without quotes), procli will be set as the default protocol client for SSH
     defaultSSHApp: true,
 
     // if `true` (without backticks and without quotes), on right click selected text will be copied or pasted if no
@@ -122,19 +122,19 @@ module.exports = {
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
 
-    // for advanced config flags please refer to https://hyper.is/#cfg
+    // for advanced config flags please refer to https://procli.is/#cfg
   },
 
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
   // examples:
-  //   `hyperpower`
+  //   `proclipower`
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [],
 
   // in development, you can create a directory under
-  // `~/.hyper_plugins/local/` and include it here
+  // `~/.procli_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
   localPlugins: [],
 

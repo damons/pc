@@ -1,13 +1,13 @@
-// Print diagnostic information for a few arguments instead of running Hyper.
+// Print diagnostic information for a few arguments instead of running Procli.
 if (['--help', '-v', '--version'].includes(process.argv[1])) {
   const {version} = require('./package');
-  const configLocation = process.platform === 'win32' ? process.env.userprofile + '\\.hyper.js' : '~/.hyper.js';
+  const configLocation = process.platform === 'win32' ? process.env.userprofile + '\\.procli.js' : '~/.procli.js';
   //eslint-disable-next-line no-console
-  console.log(`Hyper version ${version}`);
+  console.log(`Procli version ${version}`);
   //eslint-disable-next-line no-console
-  console.log('Hyper does not accept any command line arguments. Please modify the config file instead.');
+  console.log('Procli does not accept any command line arguments. Please modify the config file instead.');
   //eslint-disable-next-line no-console
-  console.log(`Hyper configuration file located at: ${configLocation}`);
+  console.log(`Procli configuration file located at: ${configLocation}`);
   // eslint-disable-next-line unicorn/no-process-exit
   process.exit();
 }
@@ -100,10 +100,10 @@ if (isDev) {
   console.log('running in prod mode');
   if (process.platform === 'win32') {
     //eslint-disable-next-line no-console
-    addBinToUserPath().catch(err => console.error('Failed to add Hyper CLI path to user PATH', err));
+    addBinToUserPath().catch(err => console.error('Failed to add Procli CLI path to user PATH', err));
   } else {
     //eslint-disable-next-line no-console
-    addSymlink().catch(err => console.error('Failed to symlink Hyper CLI', err));
+    addSymlink().catch(err => console.error('Failed to symlink Procli CLI', err));
   }
 }
 
@@ -187,11 +187,11 @@ app.on('ready', () =>
         // check if should be set/removed as default ssh protocol client
         if (config.getConfig().defaultSSHApp && !app.isDefaultProtocolClient('ssh')) {
           //eslint-disable-next-line no-console
-          console.log('Setting Hyper as default client for ssh:// protocol');
+          console.log('Setting Procli as default client for ssh:// protocol');
           app.setAsDefaultProtocolClient('ssh');
         } else if (!config.getConfig().defaultSSHApp && app.isDefaultProtocolClient('ssh')) {
           //eslint-disable-next-line no-console
-          console.log('Removing Hyper from default client for ssh:// protocl');
+          console.log('Removing Procli from default client for ssh:// protocl');
           app.removeAsDefaultProtocolClient('ssh');
         }
       }

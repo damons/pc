@@ -2,20 +2,20 @@
 
 ## Workflow
 
-### Run Hyper in dev mode
-Hyper can be run in dev mode by cloning this repository and following the ["Contributing" section of our README](https://github.com/zeit/hyper#contribute).
+### Run Procli in dev mode
+Procli can be run in dev mode by cloning this repository and following the ["Contributing" section of our README](https://github.com/monadicus/procli#contribute).
 
 In dev mode you'll get more ouput and access to React/Redux dev-tools in Electron.
 
-Prerequisites and steps are described in the ["Contributing" section of our README](https://github.com/zeit/hyper#contribute).
+Prerequisites and steps are described in the ["Contributing" section of our README](https://github.com/monadicus/procli#contribute).
 Be sure to use the `canary` branch.
 
 ### Create a dev config file
-Copy your config file `.hyper.js` to the root of your cloned repository. Hyper, in dev mode, will use this copied config file. That means that you can continue to use your main installation of Hyper with your day-to-day configuration.
-After the first run, Hyper, in dev mode, will have created a new `.hyper_plugins` directory in your repository directory.
+Copy your config file `.procli.js` to the root of your cloned repository. Procli, in dev mode, will use this copied config file. That means that you can continue to use your main installation of Procli with your day-to-day configuration.
+After the first run, Procli, in dev mode, will have created a new `.procli_plugins` directory in your repository directory.
 
 ### Setup your plugin
-Go to your recently created `<repository_root>/.hyper_plugins/local` directory and create/clone your plugin repo. An even better method on macOS/Linux is to add a symlink to your plugin directory.
+Go to your recently created `<repository_root>/.procli_plugins/local` directory and create/clone your plugin repo. An even better method on macOS/Linux is to add a symlink to your plugin directory.
 
 Edit your dev config file, and add your plugin name (directory name in your `local` directory) in the `localPlugins` array.
 ```js
@@ -24,26 +24,26 @@ module.exports = {
     ...
   },
   plugins: [],
-  localPlugins: ['hyper-awesome-plugin'],
+  localPlugins: ['procli-awesome-plugin'],
   ...
 }
 ```
 
 ### Running your plugin
-To load, your plugin should expose at least one API method. All possible methods are listed [here](https://github.com/zeit/hyper/blob/canary/app/plugins/extensions.js).
+To load, your plugin should expose at least one API method. All possible methods are listed [here](https://github.com/monadicus/procli/blob/canary/app/plugins/extensions.js).
 
-After launching Hyper in dev mode, run `yarn run app`, it should log that your plugin has been correcty loaded: `Plugin hyper-awesome-plugin (0.1.0) loaded.`. Name and version printed are the ones in your plugins `package.json` file.
+After launching Procli in dev mode, run `yarn run app`, it should log that your plugin has been correcty loaded: `Plugin procli-awesome-plugin (0.1.0) loaded.`. Name and version printed are the ones in your plugins `package.json` file.
 
 When you put a `console.log()` in your plugin code, it will be displayed in the Electron dev-tools, but only if it is located in a renderer method, like component decorators. If it is located in the Electron main process method, like the `onApp` handler, it will be displayed in your terminal where you ran `yarn run app` or in your VSCode console.
 
 ## Recipes
-Almost all available API methods can be found on https://www.hyper.is.
+Almost all available API methods can be found on https://www.procli.is.
 If there's any missing, let us know or submit a PR to document it!
 
 ### Components
-You can decorate almost all Hyper components with a Higher-Order Component (HOC). To understand their architecture, the easiest way is to use React dev-tools to dig in to their hierachy.
+You can decorate almost all Procli components with a Higher-Order Component (HOC). To understand their architecture, the easiest way is to use React dev-tools to dig in to their hierachy.
 
-Multiple plugins can decorate the same Hyper component. Thus, `Component` passed as first argument to your decorator function could possibly not be an original Hyper component but a HOC of a previous plugin. If you need to retrieve a reference to a real Hyper component, you can pass down a `onDecorated` handler.
+Multiple plugins can decorate the same Procli component. Thus, `Component` passed as first argument to your decorator function could possibly not be an original Procli component but a HOC of a previous plugin. If you need to retrieve a reference to a real Procli component, you can pass down a `onDecorated` handler.
 ```js
 exports.decorateTerms = (Terms, {React}) => {
   return class extends React.Component {
@@ -91,7 +91,7 @@ exports.decorateKeymaps = keymaps => {
 The command name can be whatever you want, but the following is better to respect the default naming convention: `<context>:<action>`.
 Hotkeys are composed by (Mousetrap supported keys)[https://craig.is/killing/mice#keys].
 
-**Bonus feature**: if your command ends with `:prefix`, it would mean that you want to use this command with an additional digit to the command. Then Hyper will create all your commands under the hood. For example, this keymap `'pane:hide:prefix': 'ctrl+shift'` will automatically generate the following:
+**Bonus feature**: if your command ends with `:prefix`, it would mean that you want to use this command with an additional digit to the command. Then Procli will create all your commands under the hood. For example, this keymap `'pane:hide:prefix': 'ctrl+shift'` will automatically generate the following:
 ```
 {
   'pane:hide:1': 'ctrl+shift+1',
@@ -128,7 +128,7 @@ rpc.on('command pane:snapshot', () => {
 ```
 
 ### Menu
-Your plugin can expose a `decorateMenu` function to modify the Hyper menu template.
+Your plugin can expose a `decorateMenu` function to modify the Procli menu template.
 Check the (Electron documentation)[https://electronjs.org/docs/api/menu-item] for more details about the different menu item types/options available.
 
 Be careful, a click handler will be executed on the main process. If you need to trigger a handler in the render process you need to use an `rpc` message like this:
@@ -190,8 +190,8 @@ exports.decorateTerm = (Term, { React, notify }) => {
 }
 ```
 
-## Hyper v2 breaking changes
-Hyper v2 uses `xterm.js` instead of `hterm`. It means that PTY ouput renders now in a canvas element, not with a hackable DOM structure.
+## Procli v2 breaking changes
+Procli v2 uses `xterm.js` instead of `hterm`. It means that PTY ouput renders now in a canvas element, not with a hackable DOM structure.
 For example, plugins can't use TermCSS in order to modify text or link styles anymore. It is now required to use available configuration params that are passed down to `xterm.js`.
 
 If your plugin was deeply linked with the `hterm` API (even public methods), it certainly doesn't work anymore.

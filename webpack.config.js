@@ -8,7 +8,7 @@ const isProd = nodeEnv === 'production';
 
 module.exports = [
   {
-    name: 'hyper',
+    name: 'procli',
     resolve: {
       extensions: ['.js', '.jsx']
     },
@@ -54,7 +54,7 @@ module.exports = [
     target: 'electron'
   },
   {
-    name: 'hyper-cli',
+    name: 'procli-cli',
     resolve: {
       extensions: ['.js', '.jsx', '.json']
     },

@@ -7,7 +7,7 @@ module.exports = (commandKeys, execCommand, showAbout) => {
     label: `${app.getName()}`,
     submenu: [
       {
-        label: 'About Hyper',
+        label: 'About Procli',
         click() {
           showAbout();
         }

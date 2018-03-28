@@ -69,7 +69,7 @@ function updatePlugins({force = false} = {}) {
       notify('Error updating plugins.', err);
     } else {
       // flag successful plugin update
-      cache.set('hyper.plugins', id_);
+      cache.set('procli.plugins', id_);
 
       // cache paths
       paths = getPaths();
@@ -83,8 +83,8 @@ function updatePlugins({force = false} = {}) {
       const loaded = modules.length;
       const total = paths.plugins.length + paths.localPlugins.length;
       const pluginVersions = JSON.stringify(getPluginVersions());
-      const changed = cache.get('hyper.plugin-versions') !== pluginVersions && loaded === total;
-      cache.set('hyper.plugin-versions', pluginVersions);
+      const changed = cache.get('procli.plugin-versions') !== pluginVersions && loaded === total;
+      cache.set('procli.plugin-versions', pluginVersions);
 
       // notify watchers
       watchers.forEach(fn => fn(err, {force}));
@@ -139,7 +139,7 @@ exports.getLoadedPluginVersions = () => {
 // we schedule the initial plugins update
 // a bit after the user launches the terminal
 // to prevent slowness
-if (cache.get('hyper.plugins') !== id || process.env.HYPER_FORCE_UPDATE) {
+if (cache.get('procli.plugins') !== id || process.env.HYPER_FORCE_UPDATE) {
   // install immediately if the user changed plugins
   //eslint-disable-next-line no-console
   console.log('plugins have changed / not init, scheduling plugins installation');
@@ -154,13 +154,13 @@ setInterval(updatePlugins, ms('5h'));
 function syncPackageJSON() {
   const dependencies = toDependencies(plugins);
   const pkg = {
-    name: 'hyper-plugins',
-    description: 'Auto-generated from `~/.hyper.js`!',
+    name: 'procli-plugins',
+    description: 'Auto-generated from `~/.procli.js`!',
     private: true,
     version: '0.0.1',
-    repository: 'zeit/hyper',
+    repository: 'monadicus/procli',
     license: 'MIT',
-    homepage: 'https://hyper.is',
+    homepage: 'https://procli.is',
     dependencies
   };
 
@@ -235,7 +235,7 @@ function requirePlugins() {
       mod = require(path_);
       const exposed = mod && Object.keys(mod).some(key => availableExtensions.has(key));
       if (!exposed) {
-        notify('Plugin error!', `Plugin "${basename(path_)}" does not expose any ` + 'Hyper extension API methods');
+        notify('Plugin error!', `Plugin "${basename(path_)}" does not expose any ` + 'Procli extension API methods');
         return;
       }
 

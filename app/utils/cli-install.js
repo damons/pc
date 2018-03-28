@@ -10,7 +10,7 @@ const readlink = pify(fs.readlink);
 const unlink = pify(fs.unlink);
 const symlink = pify(fs.symlink);
 
-const target = '/usr/local/bin/hyper';
+const target = '/usr/local/bin/procli';
 const source = cliScriptPath;
 
 const checkInstall = () => {
@@ -55,9 +55,9 @@ exports.addBinToUserPath = () => {
         reject(err);
         return;
       }
-      // C:\Users\<user>\AppData\Local\hyper\app-<version>\resources\bin
+      // C:\Users\<user>\AppData\Local\procli\app-<version>\resources\bin
       const binPath = path.dirname(cliScriptPath);
-      // C:\Users\<user>\AppData\Local\hyper
+      // C:\Users\<user>\AppData\Local\procli
       const basePath = path.resolve(binPath, '../../..');
 
       const pathItem = items.find(item => item.name.toUpperCase() === 'PATH');

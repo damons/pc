@@ -92383,7 +92383,7 @@ let supportLevel = (() => {
 		switch (env.TERM_PROGRAM) {
 			case 'iTerm.app':
 				return version >= 3 ? 3 : 2;
-			case 'Hyper':
+			case 'Procli':
 				return 3;
 			case 'Apple_Terminal':
 				return 2;
@@ -107546,7 +107546,7 @@ module.exports = {
 	"application/http": {
 		"source": "iana"
 	},
-	"application/hyperstudio": {
+	"application/proclistudio": {
 		"source": "iana",
 		"extensions": [
 			"stk"
@@ -109865,7 +109865,7 @@ module.exports = {
 			"sfd-hdstx"
 		]
 	},
-	"application/vnd.hyperdrive+json": {
+	"application/vnd.proclidrive+json": {
 		"source": "iana",
 		"compressible": true
 	},

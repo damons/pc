@@ -22,7 +22,7 @@ module.exports = class Window {
         minHeight: 190,
         backgroundColor: toElectronBackgroundColor(cfg.backgroundColor || '#000'),
         titleBarStyle: 'hidden-inset',
-        title: 'Hyper.app',
+        title: 'Procli.app',
         // we want to go frameless on Windows and Linux
         frame: process.platform === 'darwin',
         transparent: process.platform === 'darwin',

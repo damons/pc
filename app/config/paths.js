@@ -4,7 +4,7 @@ const {statSync} = require('fs');
 const {resolve, join} = require('path');
 const isDev = require('electron-is-dev');
 
-const cfgFile = '.hyper.js';
+const cfgFile = '.procli.js';
 const defaultCfgFile = 'config-default.js';
 const homeDir = homedir();
 
@@ -28,14 +28,14 @@ if (isDev) {
   }
 }
 
-const plugins = resolve(cfgDir, '.hyper_plugins');
+const plugins = resolve(cfgDir, '.procli_plugins');
 const plugs = {
   base: plugins,
   local: resolve(plugins, 'local'),
   cache: resolve(plugins, 'cache')
 };
 const yarn = resolve(__dirname, '../../bin/yarn-standalone.js');
-const cliScriptPath = resolve(__dirname, '../../bin/hyper');
+const cliScriptPath = resolve(__dirname, '../../bin/procli');
 
 const icon = resolve(__dirname, '../static/icon96x96.png');
 

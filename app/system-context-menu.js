@@ -1,20 +1,20 @@
 const Registry = require('winreg');
 
 const appPath = `"${process.execPath}"`;
-const regKey = `\\Software\\Classes\\Directory\\background\\shell\\Hyper`;
+const regKey = `\\Software\\Classes\\Directory\\background\\shell\\Procli`;
 const regParts = [
   {key: 'command', name: '', value: `${appPath} "%V"`},
-  {name: '', value: 'Open Hyper here'},
+  {name: '', value: 'Open Procli here'},
   {name: 'Icon', value: `${appPath}`}
 ];
 
-function addValues(hyperKey, commandKey, callback) {
-  hyperKey.set(regParts[1].name, Registry.REG_SZ, regParts[1].value, error => {
+function addValues(procliKey, commandKey, callback) {
+  procliKey.set(regParts[1].name, Registry.REG_SZ, regParts[1].value, error => {
     if (error) {
       //eslint-disable-next-line no-console
       console.error(error.message);
     }
-    hyperKey.set(regParts[2].name, Registry.REG_SZ, regParts[2].value, err => {
+    procliKey.set(regParts[2].name, Registry.REG_SZ, regParts[2].value, err => {
       if (err) {
         //eslint-disable-next-line no-console
         console.error(err.message);
@@ -31,13 +31,13 @@ function addValues(hyperKey, commandKey, callback) {
 }
 
 exports.add = callback => {
-  const hyperKey = new Registry({hive: 'HKCU', key: regKey});
+  const procliKey = new Registry({hive: 'HKCU', key: regKey});
   const commandKey = new Registry({
     hive: 'HKCU',
     key: `${regKey}\\${regParts[0].key}`
   });
 
-  hyperKey.keyExists((error, exists) => {
+  procliKey.keyExists((error, exists) => {
     if (error) {
       //eslint-disable-next-line no-console
       console.error(error.message);
@@ -49,19 +49,19 @@ exports.add = callback => {
           console.error(err_.message);
         }
         if (exists_) {
-          addValues(hyperKey, commandKey, callback);
+          addValues(procliKey, commandKey, callback);
         } else {
           commandKey.create(err => {
             if (err) {
               //eslint-disable-next-line no-console
               console.error(err.message);
             }
-            addValues(hyperKey, commandKey, callback);
+            addValues(procliKey, commandKey, callback);
           });
         }
       });
     } else {
-      hyperKey.create(err => {
+      procliKey.create(err => {
         if (err) {
           //eslint-disable-next-line no-console
           console.error(err.message);
@@ -71,7 +71,7 @@ exports.add = callback => {
             //eslint-disable-next-line no-console
             console.error(err_.message);
           }
-          addValues(hyperKey, commandKey, callback);
+          addValues(procliKey, commandKey, callback);
         });
       });
     }

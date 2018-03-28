@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 const {version} = require('./package');
 
-const NEWS_URL = 'https://hyper-news.now.sh';
+const NEWS_URL = 'https://procli-news.now.sh';
 
 module.exports = function fetchNotifications(win) {
   const {rpc} = win;
@@ -18,8 +18,8 @@ module.exports = function fetchNotifications(win) {
   console.log('Checking for notification messages');
   fetch(NEWS_URL, {
     headers: {
-      'X-Hyper-Version': version,
-      'X-Hyper-Platform': process.platform
+      'X-Procli-Version': version,
+      'X-Procli-Platform': process.platform
     }
   })
     .then(res => res.json())

@@ -11,8 +11,8 @@ module.exports = {
     'decorateBrowserOptions',
     'decorateMenu',
     'decorateTerm',
-    'decorateHyper',
-    'decorateHyperTerm', // for backwards compatibility with hyperterm
+    'decorateProcli',
+    'decorateProcliTerm', // for backwards compatibility with procliterm
     'decorateHeader',
     'decorateTerms',
     'decorateTab',
@@ -28,11 +28,11 @@ module.exports = {
     'getTabProps',
     'getTabsProps',
     'getTermGroupProps',
-    'mapHyperTermState',
+    'mapProcliTermState',
     'mapTermsState',
     'mapHeaderState',
     'mapNotificationsState',
-    'mapHyperTermDispatch',
+    'mapProcliTermDispatch',
     'mapTermsDispatch',
     'mapHeaderDispatch',
     'mapNotificationsDispatch'

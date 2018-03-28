@@ -13,7 +13,7 @@ const _extract = function(script) {
 
 const _syntaxValidation = function(cfg) {
   try {
-    return new vm.Script(cfg, {filename: '.hyper.js', displayErrors: true});
+    return new vm.Script(cfg, {filename: '.procli.js', displayErrors: true});
   } catch (err) {
     notify('Error loading config:', `${err.name}, see DevTools for more info`);
     //eslint-disable-next-line no-console

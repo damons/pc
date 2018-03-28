@@ -1,7 +1,7 @@
 {
   "name": "website",
   "version": "0.0.1",
-  "description": "The official website for hyper.app",
+  "description": "The official website for procli.app",
   "dependencies": {
     "serve": "latest"
   },
@@ -9,6 +9,6 @@
     "start": "serve . -c 5"
   },
   "now": {
-    "alias": "hyper.is"
+    "alias": "procli.is"
   }
 }

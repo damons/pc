@@ -19,7 +19,7 @@ const _watch = function() {
     // Need to wait 100ms to ensure that write is complete
     setTimeout(() => {
       cfg = _import();
-      notify('Configuration updated', 'Hyper configuration reloaded!');
+      notify('Configuration updated', 'Procli configuration reloaded!');
       watchers.forEach(fn => fn());
       checkDeprecatedConfig();
     }, 100);
@@ -28,7 +28,7 @@ const _watch = function() {
   // Windows
   if (process.platform === 'win32') {
     // watch for changes on config every 2s on Windows
-    // https://github.com/zeit/hyper/pull/1772
+    // https://github.com/monadicus/procli/pull/1772
     _watcher = fs.watchFile(cfgPath, {interval: 2000}, (curr, prev) => {
       if (curr.mtime === 0) {
         //eslint-disable-next-line no-console
