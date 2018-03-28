@@ -11,8 +11,8 @@ module.exports = {
     'decorateBrowserOptions',
     'decorateMenu',
     'decorateTerm',
-    'decorateProcli',
-    'decorateProcliTerm', // for backwards compatibility with procliterm
+    'decoratepc',
+    'decoratepcTerm', // for backwards compatibility with pcterm
     'decorateHeader',
     'decorateTerms',
     'decorateTab',
@@ -28,11 +28,11 @@ module.exports = {
     'getTabProps',
     'getTabsProps',
     'getTermGroupProps',
-    'mapProcliTermState',
+    'mappcTermState',
     'mapTermsState',
     'mapHeaderState',
     'mapNotificationsState',
-    'mapProcliTermDispatch',
+    'mappcTermDispatch',
     'mapTermsDispatch',
     'mapHeaderDispatch',
     'mapNotificationsDispatch'

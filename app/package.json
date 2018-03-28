@@ -1,14 +1,14 @@
 {
-  "name": "procli",
-  "productName": "Procli",
+  "name": "pc",
+  "productName": "pc",
   "description": "A terminal built on web technologies",
   "version": "2.0.0-canary.15",
   "license": "MIT",
   "author": {
-    "name": "ZEIT, Inc.",
+    "name": "Damon Sicore",
     "email": "team@monadicus.co"
   },
-  "repository": "monadicus/procli",
+  "repository": "monadicus/pc",
   "dependencies": {
     "async-retry": "1.1.4",
     "color": "2.0.1",

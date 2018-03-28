@@ -12,15 +12,15 @@ test.before(async () => {
 
   switch (process.platform) {
     case 'linux':
-      pathToBinary = path.join(__dirname, '../dist/linux-unpacked/procli');
+      pathToBinary = path.join(__dirname, '../dist/linux-unpacked/pc');
       break;
 
     case 'darwin':
-      pathToBinary = path.join(__dirname, '../dist/mac/Procli.app/Contents/MacOS/Procli');
+      pathToBinary = path.join(__dirname, '../dist/mac/pc.app/Contents/MacOS/pc');
       break;
 
     case 'win32':
-      pathToBinary = path.join(__dirname, '../dist/win-unpacked/Procli.exe');
+      pathToBinary = path.join(__dirname, '../dist/win-unpacked/pc.exe');
       break;
 
     default:

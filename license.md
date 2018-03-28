@@ -1,5 +1,7 @@
 # MIT License
 
+Copyright (c) 2018 Damon Sicore
+
 Copyright (c) 2018 ZEIT, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

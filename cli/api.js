@@ -5,11 +5,11 @@ const registryUrl = require('registry-url')();
 const pify = require('pify');
 const recast = require('recast');
 
-const fileName = `${os.homedir()}/.procli.js`;
+const fileName = `${os.homedir()}/.pc.js`;
 
 /**
  * We need to make sure the file reading and parsing is lazy so that failure to
- * statically analyze the procli configuration isn't fatal for all kinds of
+ * statically analyze the pc configuration isn't fatal for all kinds of
  * subcommands. We can use memoization to make reading and parsing lazy.
  */
 function memoize(fn) {

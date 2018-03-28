@@ -21,7 +21,7 @@ let canaryUpdates = false;
 
 const buildFeedUrl = (canary, currentVersion) => {
   const updatePrefix = canary ? 'releases-canary' : 'releases';
-  return `https://${updatePrefix}.procli.is/update/${isLinux ? 'deb' : platform}/${currentVersion}`;
+  return `https://${updatePrefix}.pc.is/update/${isLinux ? 'deb' : platform}/${currentVersion}`;
 };
 
 const isCanary = updateChannel => updateChannel === 'canary';
@@ -70,7 +70,7 @@ module.exports = win => {
   const {rpc} = win;
 
   const onupdate = (ev, releaseNotes, releaseName, date, updateUrl, onQuitAndInstall) => {
-    const releaseUrl = updateUrl || `https://github.com/monadicus/procli/releases/tag/${releaseName}`;
+    const releaseUrl = updateUrl || `https://github.com/monadicus/pc/releases/tag/${releaseName}`;
     rpc.emit('update available', {releaseNotes, releaseName, releaseUrl, canInstall: !!onQuitAndInstall});
   };
 

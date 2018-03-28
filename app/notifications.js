@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 const {version} = require('./package');
 
-const NEWS_URL = 'https://procli-news.now.sh';
+const NEWS_URL = 'https://pc-news.now.sh';
 
 module.exports = function fetchNotifications(win) {
   const {rpc} = win;
@@ -18,8 +18,8 @@ module.exports = function fetchNotifications(win) {
   console.log('Checking for notification messages');
   fetch(NEWS_URL, {
     headers: {
-      'X-Procli-Version': version,
-      'X-Procli-Platform': process.platform
+      'X-pc-Version': version,
+      'X-pc-Platform': process.platform
     }
   })
     .then(res => res.json())

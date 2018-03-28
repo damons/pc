@@ -21,9 +21,9 @@ Regardless of the platform you are working on, you will need to have Yarn instal
 2. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device
 3. Install the dependencies: `yarn`
 4. Build the code and watch for changes: `yarn run dev`
-5. To run `procli`
+5. To run `pc`
   * `yarn run app` from another terminal tab/window/pane
-  * If you are using **Visual Studio Code**, select `Launch procli` in debugger configuration to launch a new procli instance with debugger attached.
+  * If you are using **Visual Studio Code**, select `Launch pc` in debugger configuration to launch a new pc instance with debugger attached.
 
 To make sure that your code works in the finished application, you can generate the binaries like this:
 
@@ -47,11 +47,3 @@ to the Terms of Service by running `sudo xcodebuild` after a fresh Xcode install
 
 If you have issues in the `codesign` step when running `yarn run dist` on macOS, you can temporarily disable code signing locally by setting
 `export CSC_IDENTITY_AUTO_DISCOVERY=false` for the current terminal session.
-
-## Related Repositories
-
-- [Art](https://github.com/monadicus/art/tree/master/procli)
-- [Website](website/)
-- [Sample Extension](https://github.com/monadicus/proclipower)
-- [Sample Theme](https://github.com/monadicus/procliyellow)
-- [Awesome Procli](https://github.com/bnb/awesome-procli)

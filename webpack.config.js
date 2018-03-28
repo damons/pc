@@ -8,7 +8,7 @@ const isProd = nodeEnv === 'production';
 
 module.exports = [
   {
-    name: 'procli',
+    name: 'pc',
     resolve: {
       extensions: ['.js', '.jsx']
     },
@@ -54,7 +54,7 @@ module.exports = [
     target: 'electron'
   },
   {
-    name: 'procli-cli',
+    name: 'pc-cli',
     resolve: {
       extensions: ['.js', '.jsx', '.json']
     },
